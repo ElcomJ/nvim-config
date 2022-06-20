@@ -52,7 +52,7 @@ filetype indent on
 
 
 syntax on
-let g:gruvbox_contrast = 'hard'
+let g:gruvbox_contrast_dark='medium'
 colorscheme gruvbox
 
 
