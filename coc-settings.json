@@ -1,0 +1,37 @@
+{
+    "languageserver": {
+        
+    },
+
+    "coc.preferences.formatOnSaveFiletypes": [
+        "html",
+        "json",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "css"
+      ],
+
+    "diagnostic.displayByAle": true,
+    "coc.preferences.colorSupport": true,
+    "coc.preferences.formatOnType": true,
+  
+
+    "explorer.width": 30,
+    "explorer.file.showHiddenFiles": true,
+    "explorer.icon.enableNerdfont": true,
+    "explorer.icon.source" : "vim-devicons",
+    "explorer.previewAction.onHover": false,
+    "explorer.keyMappings.global": {
+    "<cr>": ["expandable?", "expand", "open"],  
+    "rr" : "rename",
+    "af" : "addFile",
+    "ad" : "addDirectory",
+    "df" : "delete",
+    "v"  : "open:vsplit",
+    "h"  : "open:split"
+    },
+    "explorer.git.enable": true
+
+}
