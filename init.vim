@@ -14,6 +14,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'SirVer/ultisnips'
 
 call plug#end()
 
@@ -55,8 +56,12 @@ filetype indent on
 
 syntax on
 let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_italic=1
 colorscheme gruvbox
 
+" Italics
+let &t_ZH = "\e[3m"
+let &t_ZR = "\e[23m"
 
 " indent-guides
 
@@ -93,20 +98,13 @@ let g:ale_fix_on_save = 1
   nmap <silent> gr <Plug>(coc-references)
   nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-  function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
   endfunction
-
-  " Use <c-space> to trigger completion.
-  inoremap <silent><expr> <c-space> coc#refresh()
-  " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-
-  " Coc only does snippet and additional edit on confirm.
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " AirLine
   let g:airline_theme = 'gruvbox'
