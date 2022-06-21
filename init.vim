@@ -44,6 +44,7 @@ set splitright
 set splitbelow       
 set autoread         
 set mouse=a
+set colorcolumn=150
 set t_Co=256          
 
 
