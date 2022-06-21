@@ -149,6 +149,7 @@ let g:ale_fix_on_save = 1
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
   nnoremap <silent> K :call <SID>show_documentation()<CR>
+  inoremap <silent><expr> <c-space> coc#refresh()
 
   function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
