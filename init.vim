@@ -14,6 +14,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'luochen1990/rainbow'
 " Plug 'SirVer/ultisnips'
 
 call plug#end()
@@ -65,8 +66,8 @@ let &t_ZR = "\e[23m"
 
 " indent-guides
 
-let g:indentguides_spacechar = '▏'
-let g:indentguides_tabchar = '▏'
+let g:indentguides_spacechar = '┆'
+let g:indentguides_tabchar = '┆'
 
 "ale
 
@@ -120,6 +121,14 @@ let g:ale_fix_on_save = 1
   nnoremap <leader>fg <cmd>Telescope live_grep<cr>
   nnoremap <leader>fb <cmd>Telescope buffers<cr>
   nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+  " Rainbow Brackets
+
+  let g:rainbow_active = 1
+
+  let g:rainbow_conf = {
+  \  'operators': '_,\|+\|-\|*\|\/\|===\|!==_'
+  \}
 
 " Remaps
   
