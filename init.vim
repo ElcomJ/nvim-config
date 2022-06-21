@@ -9,13 +9,17 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'dense-analysis/ale'
 Plug 'thaerkh/vim-indentguides'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'luochen1990/rainbow'
 " Plug 'SirVer/ultisnips'
+
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 
 call plug#end()
 
@@ -64,6 +68,53 @@ colorscheme gruvbox
 let &t_ZH = "\e[3m"
 let &t_ZR = "\e[23m"
 
+" lualine
+
+lua << END
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'gruvbox',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+    globalstatus = false,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+END
+
+" bufferline
+
+lua << END
+require("bufferline").setup{}
+END
+
+let mapleader = "\<Space>"
+
+nnoremap <leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
+nnoremap <leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
+nnoremap <leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
+nnoremap <leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
+
 " indent-guides
 
 let g:indentguides_spacechar = '┆'
@@ -108,9 +159,9 @@ let g:ale_fix_on_save = 1
   endfunction
 
 " AirLine
-  let g:airline_theme = 'gruvbox'
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#enabled = 1
+  " let g:airline_theme = 'gruvbox'
+  " let g:airline_powerline_fonts = 1
+  " let g:airline#extensions#tabline#enabled = 1
  
 
 " Telescope
