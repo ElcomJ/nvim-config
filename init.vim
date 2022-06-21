@@ -13,6 +13,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -122,7 +123,7 @@ let g:ale_fix_on_save = 1
   nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Remaps
-
+  
   map <C-Left> <C-w>h
   map <C-Down> <C-w>j
   map <C-Up> <C-w>k
