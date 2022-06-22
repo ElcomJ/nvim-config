@@ -199,8 +199,6 @@ let g:ale_fix_on_save = 1
 
 " GitGutter
 
-  let g:gitgutter_highlight_lines = 1
-  let g:gitgutter_highlight_linenrs = 1
 
 " Remaps
   
