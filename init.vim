@@ -7,7 +7,7 @@ Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'dense-analysis/ale'
-Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'thaerkh/vim-indentguides'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -108,22 +108,10 @@ lua << END
 END
 
 
-" indent-blankline
+" vim-indentguides
 
-lua << END
-
-require("indent_blankline").setup {
-  buftype_exclude = {"terminal"},
-  filetype_exclude = {"dashboard", "coc-explorer", "plug"},
-  show_current_context = true,
-  context_patterns = {
-    "class", "return", "function", "method", "^if", "^while", "jsx_element", "^for", "^object",
-    "^table", "block", "arguments", "if_statement", "else_clause", "jsx_element",
-    "jsx_self_closing_element", "try_statement", "catch_clause", "import_statement",
-    "operation_type"
-  }
-}
-END
+  let g:indentguides_spacechar = '┆'
+  let g:indentguides_tabchar = '┆'
 
 "ale
 
@@ -198,6 +186,7 @@ let g:ale_fix_on_save = 1
   let g:blamer_show_in_insert_modes = 0
 
 " GitGutter
+
 
 
 " Remaps
