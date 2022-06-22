@@ -1,25 +1,24 @@
 call plug#begin()
 
 Plug 'sheerun/vim-polyglot'
-Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'dense-analysis/ale'
-Plug 'thaerkh/vim-indentguides'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'luochen1990/rainbow'
+Plug 'majutsushi/tagbar'
 " Plug 'SirVer/ultisnips'
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+Plug 'APZelos/blamer.nvim'
 
 call plug#end()
 
@@ -105,20 +104,26 @@ END
 " bufferline
 
 lua << END
-require("bufferline").setup{}
+  require("bufferline").setup{}
 END
 
-let mapleader = "\<Space>"
 
-nnoremap <leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
-nnoremap <leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
-nnoremap <leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
-nnoremap <leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
+" indent-blankline
 
-" indent-guides
+lua << END
 
-let g:indentguides_spacechar = '┆'
-let g:indentguides_tabchar = '┆'
+require("indent_blankline").setup {
+  buftype_exclude = {"terminal"},
+  filetype_exclude = {"dashboard", "coc-explorer", "plug"},
+  show_current_context = true,
+  context_patterns = {
+    "class", "return", "function", "method", "^if", "^while", "jsx_element", "^for", "^object",
+    "^table", "block", "arguments", "if_statement", "else_clause", "jsx_element",
+    "jsx_self_closing_element", "try_statement", "catch_clause", "import_statement",
+    "operation_type"
+  }
+}
+END
 
 "ale
 
@@ -142,12 +147,11 @@ let g:ale_fix_on_save = 1
 
   let g:coc_global_extensions = []
 
-  nnoremap <C-a> :CocCommand explorer<CR>
-
   nmap <silent> gd <Plug>(coc-definition)
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
+  nmap <silent> rn <Plug>(coc-rename)
   nnoremap <silent> K :call <SID>show_documentation()<CR>
   inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -158,12 +162,11 @@ let g:ale_fix_on_save = 1
       call CocAction('doHover')
     endif
   endfunction
-
-" AirLine
-  " let g:airline_theme = 'gruvbox'
-  " let g:airline_powerline_fonts = 1
-  " let g:airline#extensions#tabline#enabled = 1
  
+ " coc-explorer
+
+   nnoremap <C-a> :CocCommand explorer<CR>
+
 
 " Telescope
 
@@ -181,6 +184,23 @@ let g:ale_fix_on_save = 1
   let g:rainbow_conf = {
   \  'operators': '_,\|+\|-\|*\|\/\|===\|!==_'
   \}
+
+ " Tagbar
+
+  nmap <F8> :TagbarToggle<CR>
+
+
+" blamer
+
+  let g:blamer_enabled = 1
+  let g:blamer_delay = 100
+  let g:blamer_show_in_visual_modes = 1
+  let g:blamer_show_in_insert_modes = 0
+
+" GitGutter
+
+  let g:gitgutter_highlight_lines = 1
+  let g:gitgutter_highlight_linenrs = 1
 
 " Remaps
   
@@ -200,6 +220,10 @@ let g:ale_fix_on_save = 1
   nmap tv :vsplit<CR>
   nmap tt :q<CR>
   nmap tc :!
+
+  inoremap <C-s> <esc>:w<cr>
+  nnoremap <C-q> :exit<cr>
+
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
