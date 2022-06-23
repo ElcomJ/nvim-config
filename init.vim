@@ -20,15 +20,21 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'APZelos/blamer.nvim'
 
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'preservim/nerdcommenter'
+
+
 call plug#end()
 
 
-syntax on            
+syntax on
+
+set background=dark
 set encoding=utf-8
 set termguicolors
 set number
 set relativenumber               
-set tabstop=4        
+set tabstop=4
 set cursorline       
 set softtabstop=4    
 set shiftwidth=4     
@@ -58,14 +64,18 @@ filetype plugin on
 filetype indent on 
 
 
-syntax on
-let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 colorscheme gruvbox
 
+" highlight Normal guibg=NONE ctermbg=NONE
+" highlight EndOfBuffer guibg=NONE ctermbg=NONE
+
 " Italics
-let &t_ZH = "\e[3m"
-let &t_ZR = "\e[23m"
+
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
 
 " lualine
 
@@ -73,7 +83,7 @@ lua << END
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox',
+    theme = 'gruvbox_dark',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
@@ -100,6 +110,7 @@ require('lualine').setup {
   extensions = {}
 }
 END
+
 
 " bufferline
 
@@ -131,6 +142,7 @@ let g:ale_fix_on_save = 1
   let g:ale_sign_error = '✘'
   let g:ale_sign_warning = '⚠'
 
+
 " COC
 
   let g:coc_global_extensions = []
@@ -151,6 +163,7 @@ let g:ale_fix_on_save = 1
     endif
   endfunction
  
+
  " coc-explorer
 
    nnoremap <C-a> :CocCommand explorer<CR>
@@ -164,6 +177,9 @@ let g:ale_fix_on_save = 1
   nnoremap <leader>fg <cmd>Telescope live_grep<cr>
   nnoremap <leader>fb <cmd>Telescope buffers<cr>
   nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+  nnoremap <leader>fc <cmd>Telescope git_commits<cr>
+  nnoremap <F1>       <cmd>Telescope treesitter<cr>
+
 
   " Rainbow Brackets
 
@@ -173,6 +189,7 @@ let g:ale_fix_on_save = 1
   \  'operators': '_,\|+\|-\|*\|\/\|===\|!==_',
   \  'guis': ['bold']
   \}
+
 
  " Tagbar
 
@@ -186,8 +203,15 @@ let g:ale_fix_on_save = 1
   let g:blamer_show_in_visual_modes = 1
   let g:blamer_show_in_insert_modes = 0
 
+
 " GitGutter
 
+  highlight clear SignColumn
+
+
+" NERD Commenter
+
+  noremap <Leader>cc 
 
 
 " Remaps
@@ -207,10 +231,13 @@ let g:ale_fix_on_save = 1
   nmap th :split<CR>
   nmap tv :vsplit<CR>
   nmap tt :q<CR>
-  nmap tc :!
+  
 
   inoremap <C-s> <esc>:w<cr>
   nnoremap <C-q> :exit<cr>
+  nnoremap <C-z> :vsplit term://zsh<CR>
+  nnoremap <M-Right>     :vertical resize -2<CR>
+  nnoremap <M-Left>      :vertical resize +2<CR>
 
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
@@ -225,13 +252,3 @@ function! HighlightWordUnderCursor()
 endfunction
 
 autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
-
-" Terminal
-
-  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-  function! OpenTerminal()
-    split term://zsh
-    resize 15
-  endfunction
-  nnoremap <C-z> :call OpenTerminal()<CR>
-  tnoremap <Esc> <C-\><C-n>
