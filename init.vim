@@ -22,6 +22,7 @@ Plug 'APZelos/blamer.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'preservim/nerdcommenter'
+Plug 'akinsho/toggleterm.nvim', { 'tag': 'v1.*' }
 
 
 call plug#end()
@@ -76,6 +77,33 @@ colorscheme gruvbox
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
+
+" toggleterm
+
+lua << END
+require("toggleterm").setup({
+	size = 20,
+	open_mapping = [[<C-z>]],
+	hide_numbers = true,
+	shade_filetypes = {},
+	shade_terminals = true,
+	shading_factor = 2,
+	start_in_insert = true,
+	insert_mappings = true,
+	persist_size = true,
+	direction = "float",
+	close_on_exit = true,
+	shell = vim.o.shell,
+	float_opts = {
+		border = "curved",
+		winblend = 0,
+		highlights = {
+			border = "Normal",
+			background = "Normal",
+		},
+	},
+})
+END
 
 " lualine
 
@@ -240,8 +268,7 @@ let g:ale_fix_on_save = 1
   nnoremap <C-q> :exit<cr>
   nnoremap <M-Right>     :vertical resize -2<CR>
   nnoremap <M-Left>      :vertical resize +2<CR>
-  nnoremap <C-z> :vsplit term://zsh<CR>
-  tnoremap <Esc> <C-\><C-n>
+  
 
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
