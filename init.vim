@@ -199,14 +199,17 @@ let g:ale_fix_on_save = 1
 " blamer
 
   let g:blamer_enabled = 1
-  let g:blamer_delay = 100
-  let g:blamer_show_in_visual_modes = 1
+  let g:blamer_delay = 500
+  let g:blamer_show_in_visual_modes = 0
   let g:blamer_show_in_insert_modes = 0
 
 
 " GitGutter
 
   highlight clear SignColumn
+  highlight GitGutterAdd    guibg=NONE
+  highlight GitGutterChange guibg=NONE
+  highlight GitGutterDelete guibg=NONE
 
 
 " NERD Commenter
@@ -235,9 +238,10 @@ let g:ale_fix_on_save = 1
 
   inoremap <C-s> <esc>:w<cr>
   nnoremap <C-q> :exit<cr>
-  nnoremap <C-z> :vsplit term://zsh<CR>
   nnoremap <M-Right>     :vertical resize -2<CR>
   nnoremap <M-Left>      :vertical resize +2<CR>
+  nnoremap <C-z> :vsplit term://zsh<CR>
+  tnoremap <Esc> <C-\><C-n>
 
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')

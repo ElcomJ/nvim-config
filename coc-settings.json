@@ -20,7 +20,7 @@
   
 
     "explorer.width": 30,
-    "explorer.position": "right",
+    "explorer.position": "left",
     "explorer.mouseMode": "none",
     "explorer.file.showHiddenFiles": false,
     "explorer.icon.enableNerdfont": true,
