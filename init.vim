@@ -259,12 +259,12 @@ END
   nmap oo A<CR>
   nmap te :tabe<CR>
   nmap tc :tabclose<CR>
+  nmap tt :bp<bar>sp<bar>bn<bar>bd<CR>
   nmap ty :bn<CR>
   nmap tr :bp<CR>
   nmap td :bd<CR>
   nmap th :split<CR>
   nmap tv :vsplit<CR>
-  nmap tt :q<CR>
   
 
   inoremap <C-s> <esc>:w<cr>
