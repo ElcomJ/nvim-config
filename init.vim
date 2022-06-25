@@ -7,7 +7,6 @@ Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'dense-analysis/ale'
-Plug 'thaerkh/vim-indentguides'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -23,6 +22,7 @@ Plug 'APZelos/blamer.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'preservim/nerdcommenter'
 Plug 'akinsho/toggleterm.nvim', { 'tag': 'v1.*' }
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 
 call plug#end()
@@ -172,13 +172,62 @@ lua << END
 END
 
 
-" vim-indentguides
+" indent-blankline
 
-  let g:indentguides_spacechar = '┆'
-  let g:indentguides_tabchar = '┆'
+lua << END
+  local status_ok, indent_blankline = pcall(require, "indent_blankline")
+if not status_ok then
+	return
+end
+
+vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
+vim.g.indent_blankline_filetype_exclude = {
+	"help",
+	"startify",
+	"dashboard",
+	"packer",
+	"neogitstatus",
+	"NvimTree",
+	"Trouble",
+}
+vim.g.indentLine_enabled = 1
+vim.g.indent_blankline_char = "┆"
+vim.g.indent_blankline_show_trailing_blankline_indent = false
+vim.g.indent_blankline_show_first_indent_level = true
+vim.g.indent_blankline_use_treesitter = true
+vim.g.indent_blankline_show_current_context = true
+vim.g.indent_blankline_context_patterns = {
+	"class",
+	"return",
+	"function",
+	"method",
+	"^if",
+	"^while",
+	"jsx_element",
+	"^for",
+	"^object",
+	"^table",
+	"block",
+	"arguments",
+	"if_statement",
+	"else_clause",
+	"jsx_element",
+	"jsx_self_closing_element",
+	"try_statement",
+	"catch_clause",
+	"import_statement",
+	"operation_type",
+}
+
+vim.wo.colorcolumn = "99999"
+
+indent_blankline.setup({
+	show_current_context = true,
+})
+END
 
 
-"ale
+" ale
 
   let g:ale_linters = {
   \   'python'  : ['pyright'],
@@ -236,7 +285,7 @@ END
   nnoremap <F1>       <cmd>Telescope treesitter<cr>
 
 
-  " Rainbow Brackets
+" Rainbow Brackets
 
   let g:rainbow_active = 1
 
@@ -246,7 +295,7 @@ END
   \}
 
 
- " Tagbar
+" Tagbar
 
   nmap <F8> :TagbarToggle<CR>
 
