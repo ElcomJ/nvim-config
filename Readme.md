@@ -9,4 +9,4 @@ Logo após fazer isso, reinicie o seu tmux e o tema ja irá estar aplicado
 
 extensões utilizadas com o coc.nvim: 
 
-let g:coc_global_extensions = ['coc-explorer', 'coc-go', 'coc-prettier', 'coc-snippets', 'coc-pyright', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-explorer', 'coc-go', 'coc-prettier', 'coc-snippets', 'coc-pyright', 'coc-tabnine', 'coc-html', 'coc-css', 'coc-emmet']

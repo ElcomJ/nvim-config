@@ -36,6 +36,12 @@
     "v"  : "open:vsplit",
     "h"  : "open:split"
     },
+
+    "emmet.includeLanguages": [
+      "html",
+      "css"
+    ],
+
     "explorer.git.enable": true
 
 }
