@@ -58,7 +58,6 @@ set splitright
 set splitbelow       
 set autoread         
 set mouse=a
-set colorcolumn=150
 set t_Co=256          
 
 
@@ -160,11 +159,7 @@ lua << END
     autopairs = {
       enable = true,
     },
-    highlight = {
-      enable = true,
-      disable = { "" },
-      additional_vim_regex_highlighting = true,
-    },
+    
     indent = { enable = true, disable = { "yaml" } },
       context_commentstring = {
       enable = true,
