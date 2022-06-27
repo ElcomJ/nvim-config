@@ -24,6 +24,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'akinsho/toggleterm.nvim', { 'tag': 'v1.*' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'vim-syntastic/syntastic'
+Plug 'terryma/vim-multiple-cursors'
 
 
 call plug#end()
@@ -339,6 +340,17 @@ END
 
   highlight SyntasticWarningSign      guibg=NONE
   highlight SyntasticErrorSign        guibg=NONE
+
+
+" Multiple-cursors
+
+  let g:multi_cursor_start_word_key      = '<C-n>'
+  let g:multi_cursor_select_all_word_key = '<A-n>'
+  let g:multi_cursor_skip_key            = '<C-x>'
+  let g:multi_cursor_prev_key            = '<C-p>'
+  let g:multi_cursor_quit_key            = '<Esc>'
+
+  " Depois que selecionar as palavras, aperte a letra (c) para trocar
 
 
 " Remaps
