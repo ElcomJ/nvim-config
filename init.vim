@@ -248,6 +248,9 @@ END
   let g:ale_sign_error = '✘'
   let g:ale_sign_warning = '⚠'
 
+  highlight ALEErrorSign    guibg=NONE
+  highlight ALEWarningSign  guibg=NONE
+
 
 " COC
 
@@ -322,12 +325,20 @@ END
 
   noremap <Leader>cc 
 
+
 " Syntastic
 
-let g:syntastic_auto_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_error_symbol = "✗"
+  let g:syntastic_warning_symbol = "⚠"
 
-nmap <leader>sc :SyntasticCheck<CR>
-nmap <leader>sr :SyntasticReset<CR>
+  nmap <leader>sc :SyntasticCheck<CR>
+  nmap <leader>sr :SyntasticReset<CR>
+
+  highlight SyntasticWarningSign      guibg=NONE
+  highlight SyntasticErrorSign        guibg=NONE
 
 
 " Remaps
