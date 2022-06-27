@@ -23,6 +23,7 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'preservim/nerdcommenter'
 Plug 'akinsho/toggleterm.nvim', { 'tag': 'v1.*' }
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'vim-syntastic/syntastic'
 
 
 call plug#end()
@@ -320,6 +321,13 @@ END
 " NERD Commenter
 
   noremap <Leader>cc 
+
+" Syntastic
+
+let g:syntastic_auto_loc_list = 1
+
+nmap <leader>sc :SyntasticCheck<CR>
+nmap <leader>sr :SyntasticReset<CR>
 
 
 " Remaps

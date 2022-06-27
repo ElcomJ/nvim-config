@@ -17,8 +17,8 @@
     "diagnostic.displayByAle": true,
     "coc.preferences.colorSupport": true,
     "coc.preferences.formatOnType": true,
-  
 
+    
     "explorer.width": 30,
     "explorer.position": "left",
     "explorer.mouseMode": "none",
