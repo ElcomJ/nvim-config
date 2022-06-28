@@ -397,6 +397,8 @@ END
 
   nnoremap <leader>rf :RunFile<CR>
   nnoremap <leader>rp :RunProject<CR>
+
+  nnoremap <leader>gd :Git diff<CR>
   
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
