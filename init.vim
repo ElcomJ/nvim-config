@@ -25,6 +25,7 @@ Plug 'akinsho/toggleterm.nvim', { 'tag': 'v1.*' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'vim-syntastic/syntastic'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'CRAG666/code_runner.nvim'
 
 
 call plug#end()
@@ -225,6 +226,26 @@ lua << END
 END
 
 
+" code_runner
+
+lua << END
+  require('code_runner').setup {
+    mode = "term",
+    startinsert = true,
+
+    term = {
+      position = "vert",
+      size = 80
+    },
+	    
+	  filetype = {	
+		  python = "python3",
+      go = "go run"
+	  },
+  }
+END
+
+
 " ale
 
   let g:ale_linters = {
@@ -369,8 +390,13 @@ END
 
   inoremap <C-s> <esc>:w<cr>
   nnoremap <C-q> :exit<cr>
-  nnoremap <M-Right>     :vertical resize -2<CR>
-  nnoremap <M-Left>      :vertical resize +2<CR>
+  nnoremap <M-Right>          :vertical resize -2<CR>
+  nnoremap <M-Left>           :vertical resize +2<CR>
+  nnoremap <M-Up>             :resize -2<CR>
+  nnoremap <M-Down>           :resize +2<CR>
+
+  nnoremap <leader>rf :RunFile<CR>
+  nnoremap <leader>rp :RunProject<CR>
   
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
