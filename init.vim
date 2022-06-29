@@ -176,6 +176,9 @@ lua << END
   }
 END
 
+  nmap <F5> :TSDisable highlight<CR>
+  nmap <F6> :TSEnable highlight<CR>
+
 
 " indent-blankline
 
