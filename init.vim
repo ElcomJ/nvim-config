@@ -23,7 +23,6 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'preservim/nerdcommenter'
 Plug 'akinsho/toggleterm.nvim', { 'tag': 'v1.*' }
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'vim-syntastic/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'CRAG666/code_runner.nvim'
 
@@ -73,6 +72,7 @@ colorscheme gruvbox
 
 highlight Normal guibg=NONE ctermbg=NONE
 highlight EndOfBuffer guibg=NONE ctermbg=NONE
+
 
 " Italics
 
@@ -160,12 +160,19 @@ lua << END
     autopairs = {
       enable = true,
     },
-    
+
+    highlight = {
+      enable = false,
+      disable = { "" },
+      additional_vim_regex_highlighting = true,
+    },
+
     indent = { enable = true, disable = { "yaml" } },
       context_commentstring = {
       enable = true,
       enable_autocmd = false,
     },
+
   }
 END
 
@@ -338,30 +345,20 @@ END
   highlight GitGutterDelete   guibg=NONE
 
 
+" Vim-fugitive
+
+  nnoremap <leader>gd :Gvdiffsplit<CR>
+
+
 " NERD Commenter
 
   noremap <Leader>cc 
 
 
-" Syntastic
-
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_check_on_wq = 0
-  let g:syntastic_error_symbol = "✗"
-  let g:syntastic_warning_symbol = "⚠"
-
-  nmap <leader>sc :SyntasticCheck<CR>
-  nmap <leader>sr :SyntasticReset<CR>
-
-  highlight SyntasticWarningSign      guibg=NONE
-  highlight SyntasticErrorSign        guibg=NONE
-
-
 " Multiple-cursors
 
   let g:multi_cursor_start_word_key      = '<C-n>'
-  let g:multi_cursor_select_all_word_key = '<A-n>'
+  let g:multi_cursor_select_all_word_key = '<M-n>'
   let g:multi_cursor_skip_key            = '<C-x>'
   let g:multi_cursor_prev_key            = '<C-p>'
   let g:multi_cursor_quit_key            = '<Esc>'
@@ -397,8 +394,6 @@ END
 
   nnoremap <leader>rf :RunFile<CR>
   nnoremap <leader>rp :RunProject<CR>
-
-  nnoremap <leader>gd :Git diff<CR>
   
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')

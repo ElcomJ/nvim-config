@@ -4,14 +4,9 @@
     },
 
     "coc.preferences.formatOnSaveFiletypes": [
-        "html",
         "json",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "css",
-        "go"
+        "go",
+        "python"
       ],
 
     "diagnostic.displayByAle": true,
@@ -37,10 +32,6 @@
     "h"  : "open:split"
     },
 
-    "emmet.includeLanguages": [
-      "html",
-      "css"
-    ],
     
     "explorer.git.enable": true
 
