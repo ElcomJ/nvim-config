@@ -361,12 +361,16 @@ END
 " Multiple-cursors
 
   let g:multi_cursor_start_word_key      = '<C-n>'
-  let g:multi_cursor_select_all_word_key = '<M-n>'
   let g:multi_cursor_skip_key            = '<C-x>'
   let g:multi_cursor_prev_key            = '<C-p>'
   let g:multi_cursor_quit_key            = '<Esc>'
 
   " Depois que selecionar as palavras, aperte a letra (c) para trocar
+
+
+" Polyglot
+
+  let g:python_highlight_space_errors = 0
 
 
 " Remaps
@@ -403,6 +407,7 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 
 " autocmd
+
 
 function! HighlightWordUnderCursor()
     if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
