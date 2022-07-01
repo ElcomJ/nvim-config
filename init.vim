@@ -26,6 +26,8 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'CRAG666/code_runner.nvim'
 
+Plug 'psf/black', { 'branch': 'stable' }
+
 
 call plug#end()
 
@@ -53,7 +55,8 @@ set cmdheight=2
 set updatetime=100   
 set encoding=utf-8   
 set nobackup         
-set nowritebackup    
+set nowritebackup   
+set textwidth=100 
 set splitright       
 set splitbelow       
 set autoread         
@@ -408,6 +411,7 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 " autocmd
 
+autocmd BufWritePre *.py Black
 
 function! HighlightWordUnderCursor()
     if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
