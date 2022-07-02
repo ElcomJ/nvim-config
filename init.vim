@@ -26,7 +26,7 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'CRAG666/code_runner.nvim'
 
-Plug 'psf/black', { 'branch': 'stable' }
+Plug 'psf/black'
 
 
 call plug#end()
