@@ -52,7 +52,7 @@ set incsearch
 set ignorecase       
 set smartcase        
 set scrolloff=8         
-set cmdheight=2      
+set cmdheight=1      
 set updatetime=100   
 set encoding=utf-8   
 set nobackup         
