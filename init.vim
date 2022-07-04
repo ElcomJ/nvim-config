@@ -248,7 +248,7 @@ lua << END
 
     term = {
       position = "vert",
-      size = 80
+      size = 60
     },
 	    
 	  filetype = {	
@@ -412,6 +412,10 @@ END
 
   nnoremap <leader>rf :RunFile<CR>
   nnoremap <leader>rp :RunProject<CR>
+
+  nnoremap <leader>be  :BufferLineMoveNext<CR>
+  nnoremap <leader>bd  :BufferLineMovePrev<CR>
+  nnoremap <leader>bp  :BufferLineTogglePin<CR>
   
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
