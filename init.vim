@@ -27,6 +27,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'CRAG666/code_runner.nvim'
 
 Plug 'psf/black'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
 
 call plug#end()
@@ -55,8 +56,7 @@ set cmdheight=2
 set updatetime=100   
 set encoding=utf-8   
 set nobackup         
-set nowritebackup   
-set textwidth=100 
+set nowritebackup
 set splitright       
 set splitbelow       
 set autoread         
@@ -374,6 +374,14 @@ END
 " Polyglot
 
   let g:python_highlight_space_errors = 0
+
+
+" vim-pydocstring
+
+  let g:pydocstring_formatter = 'numpy'
+  
+  nmap <leader>d  :Pydocstring<CR>
+  nmap <leader>df :PydocstringFormat<CR>
 
 
 " Remaps
