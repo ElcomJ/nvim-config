@@ -12,12 +12,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
-" Plug 'SirVer/ultisnips'
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
-Plug 'APZelos/blamer.nvim'
+Plug 'rhysd/git-messenger.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'preservim/nerdcommenter'
@@ -73,6 +72,8 @@ let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 colorscheme gruvbox
 
+highlight clear SignColumn
+
 highlight Normal guibg=NONE ctermbg=NONE
 highlight EndOfBuffer guibg=NONE ctermbg=NONE
 
@@ -82,6 +83,7 @@ highlight EndOfBuffer guibg=NONE ctermbg=NONE
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
+let mapleader = "\<Space>"
 
 " toggleterm
 
@@ -151,6 +153,10 @@ END
 lua << END
   require("bufferline").setup{}
 END
+
+  nnoremap <leader>be  :BufferLineMoveNext<CR>
+  nnoremap <leader>bd  :BufferLineMovePrev<CR>
+  nnoremap <leader>bp  :BufferLineTogglePin<CR>
 
 
 " treesitter
@@ -258,6 +264,9 @@ lua << END
   }
 END
 
+  nnoremap <leader>r :RunFile<CR>
+" nnoremap <leader>rp :RunProject<CR>
+
 
 " ale
 
@@ -310,8 +319,6 @@ END
 
 " Telescope
 
-  let mapleader = "\<Space>"
-
   nnoremap <leader>ff <cmd>Telescope find_files<cr>
   nnoremap <leader>fg <cmd>Telescope live_grep<cr>
   nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -335,17 +342,15 @@ END
   nmap <F8> :TagbarToggle<CR>
 
 
-" blamer
+" Git-messenger
 
-  let g:blamer_enabled = 1
-  let g:blamer_delay = 500
-  let g:blamer_show_in_visual_modes = 0
-  let g:blamer_show_in_insert_modes = 0
+  nmap <silent> g <Plug>(git-messenger)
+
+  highlight gitmessengerPopupNormal guibg=#232324
 
 
 " GitGutter
 
-  highlight clear SignColumn
   highlight GitGutterAdd      guibg=NONE
   highlight GitGutterChange   guibg=NONE
   highlight GitGutterDelete   guibg=NONE
@@ -409,13 +414,6 @@ END
   nnoremap <M-Left>           :vertical resize +2<CR>
   nnoremap <M-Up>             :resize -2<CR>
   nnoremap <M-Down>           :resize +2<CR>
-
-  nnoremap <leader>rf :RunFile<CR>
-  nnoremap <leader>rp :RunProject<CR>
-
-  nnoremap <leader>be  :BufferLineMoveNext<CR>
-  nnoremap <leader>bd  :BufferLineMovePrev<CR>
-  nnoremap <leader>bp  :BufferLineTogglePin<CR>
   
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
