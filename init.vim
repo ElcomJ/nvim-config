@@ -278,8 +278,8 @@ END
   let g:ale_sign_error = '✘'
   let g:ale_sign_warning = '⚠'
 
-  highlight ALEErrorSign    guibg=NONE
-  highlight ALEWarningSign  guibg=NONE
+  highlight ALEErrorSign    guibg=NONE   guifg=Red
+  highlight ALEWarningSign  guibg=NONE   guifg=Yellow
 
 
 " COC
