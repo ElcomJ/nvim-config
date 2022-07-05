@@ -27,6 +27,7 @@ Plug 'CRAG666/code_runner.nvim'
 
 Plug 'psf/black'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
+Plug 'sindrets/diffview.nvim'
 
 
 call plug#end()
@@ -268,6 +269,63 @@ END
 " nnoremap <leader>rp :RunProject<CR>
 
 
+" diffview
+
+lua << END
+
+  local actions = require("diffview.actions")
+
+  require('diffview').setup{
+    diff_binaries = false,    -- Show diffs for binaries
+    enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
+    git_cmd = { "git" },      -- The git executable followed by default args.
+    use_icons = true,         -- Requires nvim-web-devicons
+    icons = {                 -- Only applies when use_icons is true.
+      folder_closed = "",
+      folder_open = "",
+    },
+    signs = {
+      fold_closed = "",
+      fold_open = "",
+    },
+
+    file_panel = {
+      listing_style = "tree",             -- One of 'list' or 'tree'
+      tree_options = {                    -- Only applies when listing_style is 'tree'
+        flatten_dirs = true,              -- Flatten dirs that only contain one single dir
+        folder_statuses = "only_folded",  -- One of 'never', 'only_folded' or 'always'.
+      },
+      win_config = {                      -- See ':h diffview-config-win_config'
+        position = "left",
+        width = 35,
+     },
+    },
+
+    file_history_panel = {
+      log_options = {   -- See ':h diffview-config-log_options'
+        single_file = {
+          diff_merges = "combined",
+        },
+        multi_file = {
+          diff_merges = "first-parent",
+        },
+      },
+      win_config = {    -- See ':h diffview-config-win_config'
+        position = "bottom",
+        height = 16,
+      },
+    },
+
+      commit_log_panel = {
+        win_config = {},  -- See ':h diffview-config-win_config'
+      },
+    }
+END
+
+nnoremap <leader>gd :DiffviewOpen<CR>
+nnoremap <leader>gh :DiffviewFileHistory<CR>
+
+
 " ale
 
   let g:ale_linters = {
@@ -356,11 +414,6 @@ END
   highlight GitGutterDelete   guibg=NONE
 
 
-" Vim-fugitive
-
-  nnoremap <leader>gd :Gvdiffsplit<CR>
-
-
 " NERD Commenter
 
   noremap <Leader>cc 
@@ -398,14 +451,16 @@ END
   nmap op o<Esc>k
   nmap oi O<Esc>j
   nmap oo A<CR>
-  nmap te :tabe<CR>
-  nmap tc :tabclose<CR>
   nmap tt :bp<bar>sp<bar>bn<bar>bd<CR>
   nmap ty :bn<CR>
   nmap tr :bp<CR>
   nmap td :bd<CR>
   nmap th :split<CR>
   nmap tv :vsplit<CR>
+
+  nmap te :tabe<CR>
+  nmap tc :tabclose<CR>
+  nmap tn :tabnext<CR>
   
 
   inoremap <C-s> <esc>:w<cr>
