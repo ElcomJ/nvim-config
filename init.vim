@@ -11,7 +11,6 @@ Plug 'morhetz/gruvbox'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
-
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
@@ -73,6 +72,9 @@ filetype indent on
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 colorscheme gruvbox
+
+hi CursorLine   term=bold     cterm=bold
+hi CursorLineNr guifg=#9403ad guibg=NONE
 
 highlight clear SignColumn
 
