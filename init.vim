@@ -423,9 +423,9 @@ nnoremap <leader>gh :DiffviewFileHistory<CR>
 
 " GitGutter
 
-  highlight GitGutterAdd      guibg=NONE
-  highlight GitGutterChange   guibg=NONE
-  highlight GitGutterDelete   guibg=NONE
+  highlight GitGutterAdd      guibg=NONE   guifg=#36e809
+  highlight GitGutterChange   guibg=NONE   guifg=#1512c9
+  highlight GitGutterDelete   guibg=NONE   guifg=#e80909
 
 
 " NERD Commenter
