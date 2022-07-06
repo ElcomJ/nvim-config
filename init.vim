@@ -8,7 +8,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'dense-analysis/ale'
 Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
@@ -61,7 +60,9 @@ set splitright
 set splitbelow       
 set autoread         
 set mouse=a
-set t_Co=256          
+set t_Co=256
+
+set fillchars+=diff:╱          
 
 
 filetype on
@@ -83,6 +84,15 @@ highlight EndOfBuffer guibg=NONE ctermbg=NONE
 
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
+
+
+" git highlight
+
+  hi DiffAdd      gui=none    guifg=NONE          guibg=#12261E
+  hi DiffChange   gui=none    guifg=NONE          guibg=NONE
+  hi DiffDelete   gui=bold    guifg=#ff8080       guibg=#341C28
+  hi DiffText     gui=none    guifg=NONE          guibg=#13233A
+
 
 let mapleader = "\<Space>"
 
@@ -276,11 +286,11 @@ lua << END
   local actions = require("diffview.actions")
 
   require('diffview').setup{
-    diff_binaries = false,    -- Show diffs for binaries
-    enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
-    git_cmd = { "git" },      -- The git executable followed by default args.
-    use_icons = true,         -- Requires nvim-web-devicons
-    icons = {                 -- Only applies when use_icons is true.
+    diff_binaries = false,    
+    enhanced_diff_hl = false, 
+    git_cmd = { "git" },      
+    use_icons = true,         
+    icons = {                 
       folder_closed = "",
       folder_open = "",
     },
@@ -290,19 +300,19 @@ lua << END
     },
 
     file_panel = {
-      listing_style = "tree",             -- One of 'list' or 'tree'
-      tree_options = {                    -- Only applies when listing_style is 'tree'
-        flatten_dirs = true,              -- Flatten dirs that only contain one single dir
-        folder_statuses = "only_folded",  -- One of 'never', 'only_folded' or 'always'.
+      listing_style = "tree",             
+      tree_options = {                    
+        flatten_dirs = true,              
+        folder_statuses = "only_folded",  
       },
-      win_config = {                      -- See ':h diffview-config-win_config'
+      win_config = {                      
         position = "left",
-        width = 35,
+        width = 30,
      },
     },
 
     file_history_panel = {
-      log_options = {   -- See ':h diffview-config-log_options'
+      log_options = {   
         single_file = {
           diff_merges = "combined",
         },
@@ -310,14 +320,18 @@ lua << END
           diff_merges = "first-parent",
         },
       },
-      win_config = {    -- See ':h diffview-config-win_config'
+      win_config = {   
         position = "bottom",
-        height = 16,
+        height = 15,
       },
     },
 
       commit_log_panel = {
-        win_config = {},  -- See ':h diffview-config-win_config'
+        win_config = {},  
+      },
+
+      hooks = {
+         
       },
     }
 END
