@@ -495,6 +495,10 @@ END
   nmap te :tabe<CR>
   nmap tc :tabclose<CR>
   nmap tn :tabnext<CR>
+
+  nmap a1 :PlugUpdate<CR>
+  nmap a2 :CocUpdate<CR>
+  nmap a3 :TSUpdate<CR>
   
 
   inoremap <C-s> <esc>:w<cr>
