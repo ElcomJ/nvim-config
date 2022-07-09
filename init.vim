@@ -60,7 +60,6 @@ set nowritebackup
 set splitright       
 set splitbelow       
 set autoread
-set autoindent
 set foldmethod=manual    
 set mouse=a
 set t_Co=256
