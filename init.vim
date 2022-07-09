@@ -27,6 +27,8 @@ Plug 'psf/black'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'sindrets/diffview.nvim'
 
+Plug 'vim-test/vim-test'
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
@@ -57,7 +59,9 @@ set nobackup
 set nowritebackup
 set splitright       
 set splitbelow       
-set autoread         
+set autoread
+set autoindent
+set foldmethod=manual    
 set mouse=a
 set t_Co=256
 
@@ -342,6 +346,13 @@ nnoremap <leader>gd :DiffviewOpen<CR>
 nnoremap <leader>gh :DiffviewFileHistory<CR>
 
 
+" lsp-config
+
+lua <<END
+  require'lspconfig'.pyright.setup{}
+END
+
+
 " ale
 
   let g:ale_linters = {
@@ -458,6 +469,14 @@ nnoremap <leader>gh :DiffviewFileHistory<CR>
   nmap <leader>df :PydocstringFormat<CR>
 
 
+" vim-test
+
+  let test#strategy = "neovim"
+
+  nmap <leader>t  :TestFile<CR>
+  nmap <leader>ts :TestSuite<CR>
+
+
 " Remaps
   
   map <C-Left> <C-w>h
@@ -493,6 +512,8 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 " autocmd
 
 autocmd BufWritePre *.py Black
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
 
 function! HighlightWordUnderCursor()
     if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
