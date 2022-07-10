@@ -18,7 +18,7 @@ Plug 'rhysd/git-messenger.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'preservim/nerdcommenter'
-Plug 'akinsho/toggleterm.nvim', { 'tag': 'v1.*' }
+Plug 'akinsho/toggleterm.nvim', { 'tag': 'v2.*' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'CRAG666/code_runner.nvim'
@@ -28,7 +28,6 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'sindrets/diffview.nvim'
 
 Plug 'vim-test/vim-test'
-Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
@@ -344,12 +343,7 @@ END
 nnoremap <leader>gd :DiffviewOpen<CR>
 nnoremap <leader>gh :DiffviewFileHistory<CR>
 
-
-" lsp-config
-
-lua <<END
-  require'lspconfig'.pyright.setup{}
-END
+highlight FoldColumn guibg=NONE
 
 
 " ale
@@ -408,7 +402,6 @@ END
   nnoremap <leader>fb <cmd>Telescope buffers<cr>
   nnoremap <leader>fh <cmd>Telescope help_tags<cr>
   nnoremap <leader>fc <cmd>Telescope git_commits<cr>
-  nnoremap <F1>       <cmd>Telescope treesitter<cr>
 
 
 " Rainbow Brackets
@@ -495,10 +488,6 @@ END
   nmap te :tabe<CR>
   nmap tc :tabclose<CR>
   nmap tn :tabnext<CR>
-
-  nmap a1 :PlugUpdate<CR>
-  nmap a2 :CocUpdate<CR>
-  nmap a3 :TSUpdate<CR>
   
 
   inoremap <C-s> <esc>:w<cr>
