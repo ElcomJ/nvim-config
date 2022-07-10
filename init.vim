@@ -92,10 +92,10 @@ let &t_ZR="\e[23m"
 
 " git highlight
 
-  hi DiffAdd      gui=none    guifg=NONE          guibg=#12261E
-  hi DiffChange   gui=none    guifg=NONE          guibg=NONE
-  hi DiffDelete   gui=bold    guifg=#ff8080       guibg=#341C28
-  hi DiffText     gui=none    guifg=NONE          guibg=#13233A
+  hi DiffAdd      gui=none    guifg=NONE       guibg=DarkGreen
+  hi DiffChange   gui=none    guifg=NONE       guibg=NONE
+  hi DiffDelete   gui=bold    guifg=NONE       guibg=DarkRed
+  hi DiffText     gui=none    guifg=NONE       guibg=Blue3
 
 
 let mapleader = "\<Space>"
