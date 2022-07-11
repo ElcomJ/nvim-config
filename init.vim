@@ -28,6 +28,7 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'sindrets/diffview.nvim'
 
 Plug 'vim-test/vim-test'
+Plug 'mbbill/undotree'
 
 call plug#end()
 
@@ -52,8 +53,7 @@ set ignorecase
 set smartcase        
 set scrolloff=8         
 set cmdheight=1      
-set updatetime=100   
-set encoding=utf-8   
+set updatetime=100     
 set nobackup         
 set nowritebackup
 set splitright       
@@ -95,10 +95,10 @@ let &t_ZR="\e[23m"
   hi DiffAdd      gui=none    guifg=NONE       guibg=DarkGreen
   hi DiffChange   gui=none    guifg=NONE       guibg=NONE
   hi DiffDelete   gui=bold    guifg=NONE       guibg=DarkRed
-  hi DiffText     gui=none    guifg=NONE       guibg=Blue3
-
+  hi DiffText     gui=none    guifg=NONE       guibg=DeepSkyBlue4
 
 let mapleader = "\<Space>"
+
 
 " toggleterm
 
@@ -368,6 +368,8 @@ highlight FoldColumn guibg=NONE
   highlight ALEErrorSign    guibg=NONE   guifg=Red
   highlight ALEWarningSign  guibg=NONE   guifg=Yellow
 
+  nnoremap <leader>i :ALEImport<CR>
+
 
 " COC
 
@@ -417,6 +419,11 @@ highlight FoldColumn guibg=NONE
 " Tagbar
 
   nmap <F8> :TagbarToggle<CR>
+
+
+" Undotree
+
+  nmap <F7> :UndotreeToggle<CR>
 
 
 " Git-messenger
