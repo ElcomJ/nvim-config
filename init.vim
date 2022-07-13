@@ -484,7 +484,6 @@ highlight FoldColumn guibg=NONE
 
   let g:compe.source = {}
   let g:compe.source.path = v:true
-  let g:compe.source.buffer = v:true
 
 
 " Remaps
