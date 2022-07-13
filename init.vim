@@ -29,6 +29,7 @@ Plug 'sindrets/diffview.nvim'
 
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
+Plug 'hrsh7th/nvim-compe'
 
 call plug#end()
 
@@ -252,7 +253,7 @@ lua << END
 	  "operation_type",
   }
 
-  vim.wo.colorcolumn = "99999"
+  vim.wo.colorcolumn = "79"
 
   indent_blankline.setup({
 	  show_current_context = true,
@@ -474,6 +475,16 @@ highlight FoldColumn guibg=NONE
 
   nmap <leader>t  :TestFile<CR>
   nmap <leader>ts :TestSuite<CR>
+
+
+" nvim-compe
+
+  let g:compe = {}
+  let g:compe.enabled = v:true
+
+  let g:compe.source = {}
+  let g:compe.source.path = v:true
+  let g:compe.source.buffer = v:true
 
 
 " Remaps
