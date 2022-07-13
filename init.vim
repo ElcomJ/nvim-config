@@ -454,6 +454,7 @@ highlight FoldColumn guibg=NONE
   let g:multi_cursor_quit_key            = '<Esc>'
 
   " Depois que selecionar as palavras, aperte a letra (c) para trocar
+  " Depois que fazer os multi-cursors, aperta ESC depois C-n e (i)
 
 
 " Polyglot
