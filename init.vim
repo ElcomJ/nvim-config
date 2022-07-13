@@ -373,6 +373,10 @@ highlight FoldColumn guibg=NONE
   highlight ALEErrorSign    guibg=NONE   guifg=Red
   highlight ALEWarningSign  guibg=NONE   guifg=Yellow
 
+  nmap >a :ALENext<CR>
+  nmap <a :ALEPrevious<CR>
+  nmap ?  :ALEDetail<CR>
+
   nnoremap <leader>i :ALEImport<CR>
 
 
