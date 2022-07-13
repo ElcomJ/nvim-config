@@ -76,8 +76,12 @@ let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 colorscheme gruvbox
 
+
+" Highlights
+
 hi CursorLine   term=bold     cterm=bold
 hi CursorLineNr guifg=#9403ad guibg=NONE
+hi Visual  guifg=none guibg=grey30 gui=none
 
 highlight clear SignColumn
 
@@ -91,7 +95,7 @@ let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
 
-" git highlight
+" Git highlight
 
   hi DiffAdd      gui=none    guifg=NONE       guibg=DarkGreen
   hi DiffChange   gui=none    guifg=NONE       guibg=NONE
@@ -101,7 +105,7 @@ let &t_ZR="\e[23m"
 let mapleader = "\<Space>"
 
 
-" toggleterm
+" Toggleterm
 
 lua << END
 require("toggleterm").setup({
@@ -129,7 +133,7 @@ require("toggleterm").setup({
 END
 
 
-" lualine
+" Lualine
 
 lua << END
 require('lualine').setup {
@@ -164,7 +168,7 @@ require('lualine').setup {
 END
 
 
-" bufferline
+" Bufferline
 
 lua << END
   require("bufferline").setup{}
@@ -175,7 +179,7 @@ END
   nnoremap <leader>bp  :BufferLineTogglePin<CR>
 
 
-" treesitter
+" Treesitter
 
 lua << END
   require'nvim-treesitter.configs'.setup {
@@ -205,7 +209,7 @@ END
   nmap <F6> :TSEnable highlight<CR>
 
 
-" indent-blankline
+" Indent-blankline
 
 lua << END
   local status_ok, indent_blankline = pcall(require, "indent_blankline")
@@ -261,7 +265,7 @@ lua << END
 END
 
 
-" code_runner
+" Code_runner
 
 lua << END
   require('code_runner').setup {
@@ -284,7 +288,7 @@ END
 " nnoremap <leader>rp :RunProject<CR>
 
 
-" diffview
+" Diffview
 
 lua << END
 
@@ -347,7 +351,7 @@ nnoremap <leader>gh :DiffviewFileHistory<CR>
 highlight FoldColumn guibg=NONE
 
 
-" ale
+" Ale
 
   let g:ale_linters = {
   \   'python'  : ['pyright'],
@@ -462,7 +466,7 @@ highlight FoldColumn guibg=NONE
   let g:python_highlight_space_errors = 0
 
 
-" vim-pydocstring
+" Vim-pydocstring
 
   let g:pydocstring_formatter = 'numpy'
   
@@ -470,7 +474,7 @@ highlight FoldColumn guibg=NONE
   nmap <leader>df :PydocstringFormat<CR>
 
 
-" vim-test
+" Vim-test
 
   let test#strategy = "neovim"
 
@@ -478,7 +482,7 @@ highlight FoldColumn guibg=NONE
   nmap <leader>ts :TestSuite<CR>
 
 
-" nvim-compe
+" Nvim-compe
 
   let g:compe = {}
   let g:compe.enabled = v:true
@@ -519,7 +523,7 @@ highlight FoldColumn guibg=NONE
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 
-" autocmd
+" Autocmd
 
 autocmd BufWritePre *.py Black
 autocmd BufWinLeave *.* mkview
