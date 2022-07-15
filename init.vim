@@ -437,7 +437,7 @@ highlight FoldColumn guibg=NONE
 
 " Git-messenger
 
-  nmap <silent> g <Plug>(git-messenger)
+  nmap <leader>g <Plug>(git-messenger)
 
   highlight gitmessengerPopupNormal guibg=#232324
 
