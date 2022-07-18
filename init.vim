@@ -354,7 +354,7 @@ highlight FoldColumn guibg=NONE
 " Ale
 
   let g:ale_linters = {
-  \   'python'  : ['pyright'],
+  \   'python'  : ['pyright', 'flake8'],
   \}
 
   let g:ale_fixers = {
@@ -363,6 +363,9 @@ highlight FoldColumn guibg=NONE
 
 
   let g:ale_fix_on_save = 1
+
+  " let g:ale_virtualtext_cursor = 1
+  " let g:ale_virtualtext_prefix = '| '
 
   let g:ale_echo_msg_error_str = 'E'
   let g:ale_echo_msg_warning_str = 'W'
@@ -522,6 +525,10 @@ highlight FoldColumn guibg=NONE
   nnoremap <M-Left>           :vertical resize +2<CR>
   nnoremap <M-Up>             :resize -2<CR>
   nnoremap <M-Down>           :resize +2<CR>
+
+
+  vnoremap <leader>y "+y
+  vnoremap <leader>p "+p
   
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
