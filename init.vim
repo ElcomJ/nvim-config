@@ -30,6 +30,8 @@ Plug 'sindrets/diffview.nvim'
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
 Plug 'hrsh7th/nvim-compe'
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'tom-anders/telescope-vim-bookmarks.nvim'
 
 call plug#end()
 
@@ -60,9 +62,11 @@ set nowritebackup
 set splitright       
 set splitbelow       
 set autoread
-set foldmethod=manual    
+set foldmethod=manual
 set mouse=a
 set t_Co=256
+
+" set signcolumn=yes
 
 set fillchars+=diff:╱          
 
@@ -174,9 +178,9 @@ lua << END
   require("bufferline").setup{}
 END
 
-  nnoremap <leader>be  :BufferLineMoveNext<CR>
-  nnoremap <leader>bd  :BufferLineMovePrev<CR>
-  nnoremap <leader>bp  :BufferLineTogglePin<CR>
+  nnoremap <silent>be  :BufferLineMoveNext<CR>
+  nnoremap <silent>bd  :BufferLineMovePrev<CR>
+  nnoremap <silent>bp  :BufferLineTogglePin<CR>
 
 
 " Treesitter
@@ -415,6 +419,7 @@ highlight FoldColumn guibg=NONE
   nnoremap <leader>fg <cmd>Telescope live_grep<cr>
   nnoremap <leader>fb <cmd>Telescope buffers<cr>
   nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+  nnoremap <leader>fb <cmd>Telescope vim_bookmarks all<cr>
   nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 
 
@@ -498,6 +503,15 @@ highlight FoldColumn guibg=NONE
   let g:compe.source.path = v:true
 
 
+" Vim-bookmarks
+
+  nmap <Leader>b <Plug>BookmarkToggle
+  nmap <Leader>ba <Plug>BookmarkAnnotate
+
+  highlight BookmarkSign guifg=DodgerBlue2
+  highlight BookmarkAnnotationSign guifg=Green
+
+
 " Remaps
   
   map <C-Left> <C-w>h
@@ -529,6 +543,14 @@ highlight FoldColumn guibg=NONE
 
   vnoremap <leader>y "+y
   vnoremap <leader>p "+p
+
+
+  nnoremap <A-j> :m .+1<CR>==
+  nnoremap <A-k> :m .-2<CR>==
+  inoremap <A-j> <Esc>:m .+1<CR>==gi
+  inoremap <A-k> <Esc>:m .-2<CR>==gi
+  vnoremap <A-j> :m '>+1<CR>gv=gv
+  vnoremap <A-k> :m '<-2<CR>gv=gv
   
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
