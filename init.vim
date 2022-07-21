@@ -8,7 +8,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'dense-analysis/ale'
 Plug 'morhetz/gruvbox'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
 Plug 'nvim-lualine/lualine.nvim'
@@ -283,8 +282,7 @@ lua << END
     },
 	    
 	  filetype = {	
-		  python = "python3",
-      go = "go run"
+		  python = "python3"
 	  },
   }
 END

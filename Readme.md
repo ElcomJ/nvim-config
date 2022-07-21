@@ -5,7 +5,6 @@ Coc-nvim Extensions:
 
 
     -  coc-explorer
-    -  coc-go
     -  coc-prettier
     -  coc-snippets
     -  coc-pyright
