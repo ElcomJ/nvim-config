@@ -87,6 +87,8 @@ hi CursorLine                     guibg=grey19
 hi CursorLineNr    guifg=#9403ad  guibg=NONE
 hi Visual          guifg=none     guibg=grey19  gui=none
 
+hi ColorColumn     guibg=grey19
+
 highlight clear SignColumn
 
 highlight Normal         guibg=NONE  ctermbg=NONE
