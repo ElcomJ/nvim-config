@@ -66,7 +66,7 @@ set foldmethod=manual
 set mouse=a
 set t_Co=256
 
-" set signcolumn=yes
+" set signcolumn=yes:2
 
 set fillchars+=diff:╱          
 
@@ -367,8 +367,8 @@ highlight FoldColumn guibg=NONE
 
   let g:ale_fix_on_save = 1
 
-  " let g:ale_virtualtext_cursor = 1
-  " let g:ale_virtualtext_prefix = '| '
+  let g:ale_virtualtext_cursor = 1
+  let g:ale_virtualtext_prefix = '➤ '
 
   let g:ale_echo_msg_error_str = 'E'
   let g:ale_echo_msg_warning_str = 'W'
@@ -378,6 +378,9 @@ highlight FoldColumn guibg=NONE
 
   highlight ALEErrorSign    guibg=NONE   guifg=Red
   highlight ALEWarningSign  guibg=NONE   guifg=Yellow
+
+  highlight ALEVirtualTextError    guibg=NONE   guifg=Red
+  highlight ALEVirtualTextWarning  guibg=NONE   guifg=Yellow
 
   nmap >a :ALENext<CR>
   nmap <a :ALEPrevious<CR>
