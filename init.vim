@@ -83,14 +83,14 @@ colorscheme gruvbox
 
 " Highlights
 
-hi CursorLine   term=bold     cterm=bold
-hi CursorLineNr guifg=#9403ad guibg=NONE
-hi Visual  guifg=none guibg=grey30 gui=none
+hi CursorLine                     guibg=grey19
+hi CursorLineNr    guifg=#9403ad  guibg=NONE
+hi Visual          guifg=none     guibg=grey19  gui=none
 
 highlight clear SignColumn
 
-highlight Normal guibg=NONE ctermbg=NONE
-highlight EndOfBuffer guibg=NONE ctermbg=NONE
+highlight Normal         guibg=NONE  ctermbg=NONE
+highlight EndOfBuffer    guibg=NONE  ctermbg=NONE
 
 
 " Italics
@@ -368,7 +368,7 @@ highlight FoldColumn guibg=NONE
   let g:ale_fix_on_save = 1
 
   let g:ale_virtualtext_cursor = 1
-  let g:ale_virtualtext_prefix = '➤ '
+  let g:ale_virtualtext_prefix = ' ➤ '
 
   let g:ale_echo_msg_error_str = 'E'
   let g:ale_echo_msg_warning_str = 'W'
