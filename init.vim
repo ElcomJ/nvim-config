@@ -91,8 +91,8 @@ hi ColorColumn     guibg=grey19
 
 highlight clear SignColumn
 
-highlight Normal         guibg=NONE  ctermbg=NONE
-highlight EndOfBuffer    guibg=NONE  ctermbg=NONE
+" highlight Normal         guibg=NONE  ctermbg=NONE
+" highlight EndOfBuffer    guibg=NONE  ctermbg=NONE
 
 
 " Italics
@@ -524,6 +524,10 @@ highlight FoldColumn guibg=NONE
   map <C-Down> <C-w>j
   map <C-Up> <C-w>k
   map <C-Right> <C-w>l
+  map fd _
+  map fg $
+
+
   nmap op o<Esc>k
   nmap oi O<Esc>j
   nmap oo A<CR>
