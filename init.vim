@@ -83,11 +83,11 @@ colorscheme gruvbox
 
 " Highlights
 
-hi CursorLine                     guibg=grey13
+hi CursorLine                     guibg=grey19
 hi CursorLineNr    guifg=#9403ad  guibg=NONE
-hi Visual          guifg=none     guibg=grey17  gui=none
+hi Visual          guifg=none     guibg=grey22  gui=none
 
-hi ColorColumn     guibg=grey13
+hi ColorColumn     guibg=grey19
 
 highlight clear SignColumn
 
@@ -381,8 +381,8 @@ highlight FoldColumn guibg=NONE
   highlight ALEErrorSign    guibg=NONE   guifg=Red
   highlight ALEWarningSign  guibg=NONE   guifg=Yellow
 
-  highlight ALEVirtualTextError    guibg=grey13   guifg=Red
-  highlight ALEVirtualTextWarning  guibg=grey13   guifg=Yellow
+  highlight ALEVirtualTextError    guibg=grey19   guifg=Red
+  highlight ALEVirtualTextWarning  guibg=grey19   guifg=Yellow
 
   nmap >a :ALENext<CR>
   nmap <a :ALEPrevious<CR>
