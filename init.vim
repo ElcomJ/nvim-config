@@ -524,8 +524,6 @@ highlight FoldColumn guibg=NONE
   map <C-Down> <C-w>j
   map <C-Up> <C-w>k
   map <C-Right> <C-w>l
-  map fd _
-  map fg $
 
 
   nmap op o<Esc>k
@@ -557,6 +555,12 @@ highlight FoldColumn guibg=NONE
   inoremap <C-k> <Esc>:m .-2<CR>==gi
   vnoremap <C-j> :m '>+1<CR>gv=gv
   vnoremap <C-k> :m '<-2<CR>gv=gv
+
+
+  nnoremap fd _
+  nnoremap fg $
+  vnoremap fd _
+  vnoremap fg $
   
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
