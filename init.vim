@@ -83,11 +83,11 @@ colorscheme gruvbox
 
 " Highlights
 
-hi CursorLine                     guibg=grey19
+hi CursorLine                     guibg=grey13
 hi CursorLineNr    guifg=#9403ad  guibg=NONE
-hi Visual          guifg=none     guibg=grey19  gui=none
+hi Visual          guifg=none     guibg=grey17  gui=none
 
-hi ColorColumn     guibg=grey19
+hi ColorColumn     guibg=grey13
 
 highlight clear SignColumn
 
@@ -381,14 +381,12 @@ highlight FoldColumn guibg=NONE
   highlight ALEErrorSign    guibg=NONE   guifg=Red
   highlight ALEWarningSign  guibg=NONE   guifg=Yellow
 
-  highlight ALEVirtualTextError    guibg=NONE   guifg=Red
-  highlight ALEVirtualTextWarning  guibg=NONE   guifg=Yellow
+  highlight ALEVirtualTextError    guibg=grey13   guifg=Red
+  highlight ALEVirtualTextWarning  guibg=grey13   guifg=Yellow
 
   nmap >a :ALENext<CR>
   nmap <a :ALEPrevious<CR>
   nmap ?  :ALEDetail<CR>
-
-  nnoremap <leader>i :ALEImport<CR>
 
 
 " COC
@@ -439,6 +437,10 @@ highlight FoldColumn guibg=NONE
 
 " Tagbar
 
+  let g:tagbar_width = 45
+  let g:tagbar_autofocus = 1
+  let g:tagbar_indent = 2
+
   nmap <F8> :TagbarToggle<CR>
 
 
@@ -449,9 +451,9 @@ highlight FoldColumn guibg=NONE
 
 " Git-messenger
 
-  nmap <leader>g <Plug>(git-messenger)
-
   highlight gitmessengerPopupNormal guibg=#232324
+
+  nmap <leader>g <Plug>(git-messenger)
 
 
 " GitGutter
