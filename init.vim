@@ -68,7 +68,8 @@ set t_Co=256
 
 " set signcolumn=yes:2
 
-set fillchars+=diff:╱          
+set fillchars+=diff:╱  
+set fillchars+=eob:\        
 
 
 filetype on
@@ -177,11 +178,17 @@ END
 " Bufferline
 
 lua << END
-  require("bufferline").setup{}
+  require("bufferline").setup{
+    options = {
+      indicator_icon = " ",
+      show_buffer_close_icons = false,
+      tab_size = 16
+    }
+  }
 END
 
-  nnoremap <silent>be  :BufferLineMoveNext<CR>
-  nnoremap <silent>bd  :BufferLineMovePrev<CR>
+  nnoremap <silent>bd  :BufferLineMoveNext<CR>
+  nnoremap <silent>be  :BufferLineMovePrev<CR>
   nnoremap <silent>bp  :BufferLineTogglePin<CR>
 
 
