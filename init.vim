@@ -401,10 +401,11 @@ highlight FoldColumn guibg=NONE
   let g:coc_global_extensions = []
 
   nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
   nmap <silent> rn <Plug>(coc-rename)
+  
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
 
   nmap <silent> cd :CocDiagnostics<CR>
 
@@ -475,7 +476,7 @@ highlight FoldColumn guibg=NONE
 
 " NERD Commenter
 
-  noremap <Leader>cc 
+  " Nerd Commenter configurations here
 
 
 " Multiple-cursors

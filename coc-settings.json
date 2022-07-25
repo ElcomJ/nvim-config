@@ -39,6 +39,8 @@
       ],
 
     "diagnostic.displayByAle": true,
+    "diagnostic.refreshOnInsertMode": true,
+    
     "coc.preferences.colorSupport": true,
     "coc.preferences.formatOnType": true,
 
