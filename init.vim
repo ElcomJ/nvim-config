@@ -92,8 +92,8 @@ hi ColorColumn     guibg=grey19
 
 highlight clear SignColumn
 
-" highlight Normal         guibg=NONE  ctermbg=NONE
-" highlight EndOfBuffer    guibg=NONE  ctermbg=NONE
+highlight Normal         guibg=NONE  ctermbg=NONE
+highlight EndOfBuffer    guibg=NONE  ctermbg=NONE
 
 
 " Italics
@@ -405,6 +405,9 @@ highlight FoldColumn guibg=NONE
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
   nmap <silent> rn <Plug>(coc-rename)
+
+  nmap <silent> cd :CocDiagnostics<CR>
+
   nnoremap <silent> K :call <SID>show_documentation()<CR>
   inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -415,7 +418,7 @@ highlight FoldColumn guibg=NONE
       call CocAction('doHover')
     endif
   endfunction
- 
+  
 
  " coc-explorer
 
@@ -428,7 +431,7 @@ highlight FoldColumn guibg=NONE
   nnoremap <leader>fg <cmd>Telescope live_grep<cr>
   nnoremap <leader>fb <cmd>Telescope buffers<cr>
   nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-  nnoremap <leader>fb <cmd>Telescope vim_bookmarks all<cr>
+  nnoremap <leader>fbb <cmd>Telescope vim_bookmarks all<cr>
   nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 
 
